@@ -5,6 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	<FrameworkReference Include="Microsoft.AspNETCore.App"></FrameworkReference>
+		<FrameworkReference Include="Microsoft.AspNETCore.App"></FrameworkReference>
 	</ItemGroup>
+	
 </Project>
