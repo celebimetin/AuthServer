@@ -2,7 +2,7 @@
 using AuthServer.Core.Dtos;
 using AuthServer.Core.Models;
 
-namespace AuthServer.Core.UnitOfWork
+namespace AuthServer.Core.Services
 {
     public interface ITokenService
     {

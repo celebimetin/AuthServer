@@ -2,7 +2,7 @@
 using AuthServer.Shared.Dtos;
 using System.Threading.Tasks;
 
-namespace AuthServer.Core.UnitOfWork
+namespace AuthServer.Core.Services
 {
     public interface IUserService
     {
