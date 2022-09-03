@@ -14,8 +14,8 @@ namespace AuthServer.Service.Services
     public class GenericService<TEntity, TDto> : IGenericService<TEntity, TDto> where TEntity : class where TDto : class
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IGenericRespository<TEntity> _genericRespository;
-        public GenericService(IUnitOfWork unitOfWork, IGenericRespository<TEntity> genericRespository)
+        private readonly IGenericRepository<TEntity> _genericRespository;
+        public GenericService(IUnitOfWork unitOfWork, IGenericRepository<TEntity> genericRespository)
         {
             _genericRespository = genericRespository;
             _unitOfWork = unitOfWork;
@@ -46,15 +46,13 @@ namespace AuthServer.Service.Services
         public async Task<Response<NoDataDto>> Remove(int id)
         {
             var isExistEntity = await _genericRespository.GetByIdAsync(id);
-            if (isExistEntity == null)
-            {
-                return Response<NoDataDto>.Fail("Id Not Found", 404, true);
-            }
+            if (isExistEntity == null) return Response<NoDataDto>.Fail("Id Not Found", 404, true);
+
             _genericRespository.Remove(isExistEntity);
             await _unitOfWork.CommitAsync();
             return Response<NoDataDto>.Success(204);
         }
-        public async Task<Response<NoDataDto>> Update(TDto entity, int id)
+        public async Task<Response<NoDataDto>> UpdateAsync(TDto entity, int id)
         {
             var isExistEntity = await _genericRespository.GetByIdAsync(id);
             if (isExistEntity == null)

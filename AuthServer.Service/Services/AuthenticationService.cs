@@ -11,7 +11,6 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AuthServer.Service.Services
@@ -22,9 +21,9 @@ namespace AuthServer.Service.Services
         private readonly ITokenService _tokenService;
         private readonly UserManager<UserApp> _userManager;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IGenericRespository<UserRefreshToken> _userRefreshToken;
+        private readonly IGenericRepository<UserRefreshToken> _userRefreshToken;
 
-        public AuthenticationService(IOptions<List<Client>> optionsClient, ITokenService tokenService, UserManager<UserApp> userManager, IUnitOfWork unitOfWork, IGenericRespository<UserRefreshToken> userRefreshToken)
+        public AuthenticationService(IOptions<List<Client>> optionsClient, ITokenService tokenService, UserManager<UserApp> userManager, IUnitOfWork unitOfWork, IGenericRepository<UserRefreshToken> userRefreshToken)
         {
             _clients = optionsClient.Value;
             _tokenService = tokenService;
@@ -32,11 +31,10 @@ namespace AuthServer.Service.Services
             _unitOfWork = unitOfWork;
             _userRefreshToken = userRefreshToken;
         }
-
         public async Task<Response<TokenDto>> CreateTokenAsync(LoginDto loginDto)
         {
             if (loginDto == null) throw new ArgumentException(nameof(loginDto));
-            var user = await _userManager.FindByIdAsync(loginDto.Email);
+            var user = await _userManager.FindByEmailAsync(loginDto.Email);
             if (user == null) return Response<TokenDto>.Fail("Email veya Password yanlıştır.", 400, true);
             if (!await _userManager.CheckPasswordAsync(user, loginDto.Password)) return Response<TokenDto>.Fail("Email veya Password yanlıştır.", 400, true);
 
