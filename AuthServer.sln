@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32802.440
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.32916.344
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.API", "AuthServer.API\AuthServer.API.csproj", "{5D18C27E-5EE9-4110-9A4D-59DE8F92DC47}"
 EndProject
@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Data", "AuthServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Service", "AuthServer.Service\AuthServer.Service.csproj", "{E5971C75-82A9-4BEF-AEB0-3534E3C42075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp1.API", "WebApp1.API\WebApp1.API.csproj", "{B8DDDEDC-2634-41FC-8C61-C317C7DF3C4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp1.API", "WebApp1.API\WebApp1.API.csproj", "{B8DDDEDC-2634-41FC-8C61-C317C7DF3C4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp2.API", "WebApp2.API\WebApp2.API.csproj", "{9C3D37E3-5B68-4D86-9D5F-BFCA941CC62C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp2.API", "WebApp2.API\WebApp2.API.csproj", "{9C3D37E3-5B68-4D86-9D5F-BFCA941CC62C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp3.API", "WebApp3.API\WebApp3.API.csproj", "{351EC8DB-F6F6-40E9-817C-40D96E5138AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp3.API", "WebApp3.API\WebApp3.API.csproj", "{351EC8DB-F6F6-40E9-817C-40D96E5138AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer.Shared", "AuthServer.Shared\AuthServer.Shared.csproj", "{E5DEA6F1-7600-4DB7-B6CC-57B6DBBD2BFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Shared", "AuthServer.Shared\AuthServer.Shared.csproj", "{E5DEA6F1-7600-4DB7-B6CC-57B6DBBD2BFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{B11A2105-C8A7-465C-A9E0-00153D8BC598}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{E5DEA6F1-7600-4DB7-B6CC-57B6DBBD2BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5DEA6F1-7600-4DB7-B6CC-57B6DBBD2BFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5DEA6F1-7600-4DB7-B6CC-57B6DBBD2BFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B11A2105-C8A7-465C-A9E0-00153D8BC598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B11A2105-C8A7-465C-A9E0-00153D8BC598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B11A2105-C8A7-465C-A9E0-00153D8BC598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B11A2105-C8A7-465C-A9E0-00153D8BC598}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

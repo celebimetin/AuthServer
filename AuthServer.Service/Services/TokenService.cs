@@ -13,6 +13,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 namespace AuthServer.Service.Services
 {
@@ -32,8 +33,9 @@ namespace AuthServer.Service.Services
             random.GetBytes(numberByte);
             return Convert.ToBase64String(numberByte);
         }
-        private IEnumerable<Claim> GetClaims(UserApp userApp, List<string> audiences)
+        private async Task<IEnumerable<Claim>> GetClaims(UserApp userApp, List<string> audiences)
         {
+            var userRole = await _userManager.GetRolesAsync(userApp);
             var userList = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, userApp.Id),
@@ -41,8 +43,11 @@ namespace AuthServer.Service.Services
                 new Claim(ClaimTypes.Email, userApp.Email),
                 new Claim(ClaimTypes.Name, userApp.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("city", userApp.City),
+                new Claim("birth-date", userApp.BirthDate.ToShortDateString())
             };
             userList.AddRange(audiences.Select(x => new Claim(JwtRegisteredClaimNames.Aud, x)));
+            userList.AddRange(userRole.Select(x => new Claim(ClaimTypes.Role, x)));
             return userList;
         }
         private IEnumerable<Claim> GetClaimByClient(Client client)
@@ -67,7 +72,7 @@ namespace AuthServer.Service.Services
                 issuer: _customTokenOptions.Issuer,
                 expires: accessTokenExpiration,
                 notBefore: DateTime.Now,
-                claims: GetClaims(userApp, _customTokenOptions.Audience),
+                claims: GetClaims(userApp, _customTokenOptions.Audience).Result,
                 signingCredentials: signingCredentials);
 
             var handler = new JwtSecurityTokenHandler();

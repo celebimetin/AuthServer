@@ -7,11 +7,12 @@ using System.Security.Claims;
 namespace WebApp1.API.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
     public class WebApp1Controller : ControllerBase
     {
         [HttpGet]
+        [Authorize(Roles = "admin", Policy = "İstanbulPolicy")]
+        [Authorize(Policy = "AgePolicy")]
         public IActionResult WebApp1()
         {
             var userName = HttpContext.User.Identity.Name;
